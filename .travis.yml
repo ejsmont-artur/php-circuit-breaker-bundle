@@ -3,6 +3,7 @@ php:
   - "5.4"
   - "5.3"
 before_script:
+  - composer install
   - ./tests/before-travisci.sh
   - pear channel-discover pear.phpdoc.org
   - pear install phpdoc/phpDocumentor-alpha

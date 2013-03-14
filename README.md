@@ -1,12 +1,12 @@
-# php-circuit-breaker-bundle
+# Introduction to php-circuit-breaker-bundle
 
-[![Build Status](https://travis-ci.org/ejsmont-artur/php-circuit-breaker.png?branch=master)](https://travis-ci.org/ejsmont-artur/php-circuit-breaker)
+[![Build Status](https://travis-ci.org/ejsmont-artur/php-circuit-breaker-bundle.png?branch=master)](https://travis-ci.org/ejsmont-artur/php-circuit-breaker-bundle)
 
-[php-circuit-breaker-bundle](https://github.com/ejsmont-artur/php-circuit-breaker-bundle) is a Symfony 2 bundle providing easy integration of php-circuit-breaker component.
+php-circuit-breaker-bundle is a [Symfony 2](https://github.com/symfony/symfony) bundle, providing easy integration of [php-circuit-breaker](https://github.com/ejsmont-artur/php-circuit-breaker) component.
 
-php-circuit-breaker is the core package providing a generic PHP implementation of circuit breaker pattern.
-
-php-circuit-breaker-bundle is a lightweight wrapper around php-circuit-breaker to provide nice integration with symfony2.
+[php-circuit-breaker](https://github.com/ejsmont-artur/php-circuit-breaker) is the core package providing a generic 
+PHP implementation of [circuit breaker pattern](http://artur.ejsmont.org/blog/circuit-breaker). This bundle wraps it up 
+and makes easier to use with [Symfony 2](https://github.com/symfony/symfony) framework.
 Bundle uses service.xml to configure default services. It also integrates with Doctrine/Cache to allow you to use any 
 cache backend (in case you were already using Doctrine/Cache).
 
