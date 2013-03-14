@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!-- added factory and interface for circuit breaker -->
+    <parameters>
+        <parameter key="ejsmont_circuit_breaker_factory.class">Ejsmont\CircuitBreaker\Factory</parameter>
+        <parameter key="ejsmont_circuit_breaker.class">Ejsmont\CircuitBreaker\CircuitBreakerInterface</parameter>
+    </parameters>
+
+    <services>
+        <!-- added circuit breaker service -->
+        <service id="apcCircuitBreaker"
+                 class="%ejsmont_circuit_breaker.class%"
+                 factory-class="%ejsmont_circuit_breaker_factory.class%"
+                 factory-method="getSingleApcInstance"
+        >
+            <argument>30</argument>
+            <argument>300</argument>
+        </service>
+        
+    </services>
+</container>
