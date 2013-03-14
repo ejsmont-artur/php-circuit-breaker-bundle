@@ -105,6 +105,13 @@
 
     <!-- ======================================== GIT RELATED ====================================================== -->
 
+    <target name="git-check-status">
+        <exec executable="/bin/bash" failonerror="on" outputproperty="git-status-not-empty">
+            <arg value="-c" />
+            <arg value="git status -s" />
+        </exec>
+    </target>
+
     <target name="git-fetch-tags">
         <exec executable="/bin/bash" failonerror="on">
             <arg value="-c" />
@@ -112,7 +119,14 @@
         </exec>
     </target>
     
-    <target name="git-create-tag">
+    <target name="git-create-tag" depends="git-check-status">
+        <fail message="Can not tag a dirty folder. Commit or revert first.">
+            <condition>
+                <not>
+                    <equals arg1="${git-status-not-empty}" arg2=""/>
+                </not>
+            </condition>
+        </fail>
         <exec executable="/bin/bash" failonerror="on">
             <arg value="-c" />
             <arg value="git tag -m 'taggin ${version}' ${version}" />
