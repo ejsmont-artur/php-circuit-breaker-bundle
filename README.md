@@ -1,4 +1,4 @@
-# Introduction to php-circuit-breaker-bundle
+# What is php-circuit-breaker-bundle
 
 [![Build Status](https://travis-ci.org/ejsmont-artur/php-circuit-breaker-bundle.png?branch=master)](https://travis-ci.org/ejsmont-artur/php-circuit-breaker-bundle)
 
