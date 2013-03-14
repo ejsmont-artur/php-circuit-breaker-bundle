@@ -4,7 +4,7 @@
     <!-- ===================================== CUSTOM PROPERTIES =================================================== -->
 
     <property name="product" value="php-circuit-breaker-bundle"/>
-    <property name="version" value="0.0.3"/>
+    <property name="version" value="0.0.4"/>
 
     <!-- ==================================== GENERIC PROPERTIES =================================================== -->
     
@@ -42,14 +42,14 @@
     </target>
 
     <target name="fetch-composer" depends="check-composer" unless="composer.phar.exists">
-        <exec executable="/bin/bash">
+        <exec executable="/bin/bash" failonerror="on">
             <arg value="-c" />
             <arg value="curl -s https://getcomposer.org/installer | php" />
         </exec>
     </target>
 
     <target name="setup" depends="fetch-composer">
-        <exec executable="php" dir="${basedir}" failonerror="off">
+        <exec executable="php" dir="${basedir}" failonerror="on">
             <arg line="composer.phar update" />
         </exec>
     </target>
@@ -103,16 +103,30 @@
         </exec>
     </target>
 
-    <target name="git-tag">
-        <exec executable="/bin/bash">
+    <!-- ======================================== GIT RELATED ====================================================== -->
+
+    <target name="git-fetch-tags">
+        <exec executable="/bin/bash" failonerror="on">
             <arg value="-c" />
             <arg value="git fetch --tags" />
         </exec>
     </target>
+    
+    <target name="git-create-tag">
+        <exec executable="/bin/bash" failonerror="on">
+            <arg value="-c" />
+            <arg value="git tag -m 'taggin ${version}' ${version}" />
+        </exec>
+    </target>
 
+    <target name="git-push-tags">
+        <exec executable="/bin/bash" failonerror="on">
+            <arg value="-c" />
+            <arg value="git push --tags" />
+        </exec>
+    </target>
 
-
-
+    <target name="git-tag"   depends="git-fetch-tags,git-create-tag,git-push-tags"/>
 
     <!-- ===================================== COMPOUND SHORTCUTS ================================================== -->
     
