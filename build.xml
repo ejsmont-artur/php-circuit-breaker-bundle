@@ -35,7 +35,20 @@
     
     <target name="quick" depends="clean,init"/>
 
-    <target name="setup" depends="clean,init">
+    <!-- ========================================== COMPOSER ====================================================== -->
+
+    <target name="check-composer">
+        <available property="composer.phar.exists" file="composer.phar"/>
+    </target>
+
+    <target name="fetch-composer" depends="check-composer" unless="composer.phar.exists">
+        <exec executable="/bin/bash">
+            <arg value="-c" />
+            <arg value="curl -s https://getcomposer.org/installer | php" />
+        </exec>
+    </target>
+
+    <target name="setup" depends="fetch-composer">
         <exec executable="php" dir="${basedir}" failonerror="off">
             <arg line="composer.phar update" />
         </exec>
