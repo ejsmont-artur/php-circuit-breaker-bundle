@@ -74,16 +74,20 @@ You can define threshold and retry timeout to allow single request from time to 
 * The "ci" target generate code coverage repor, "phpunit" target does not.
 
 If you dont have composer, get it and download dependencies (creates /vendor folder)
+
     curl -s http://getcomposer.org/installer | php
     php composer.phar update
 
 You can run all tests using ant:
+
     ant phpunit
 
 You can run tests, generate coverage and docs:
+
     ant ci
 
 You can run selected test case by running:
+
     cd tests
     phpunit Unit/Ejsmont/CircuitBreakerBundle/Storage/DoctrineCacheAdapterTest.php
 
