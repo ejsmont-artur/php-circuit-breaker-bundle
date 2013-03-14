@@ -4,7 +4,7 @@
     <!-- ===================================== CUSTOM PROPERTIES =================================================== -->
 
     <property name="product" value="php-circuit-breaker-bundle"/>
-    <property name="version" value="0.0.4"/>
+    <property name="version" value="0.0.5"/>
 
     <!-- ==================================== GENERIC PROPERTIES =================================================== -->
     
