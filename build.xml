@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="php-circuit-breaker-bundle" default="ci" basedir=".">
 
-    <!-- ========================================= PROPERTIES ====================================================== -->
+    <!-- ===================================== CUSTOM PROPERTIES =================================================== -->
 
     <property name="product" value="php-circuit-breaker-bundle"/>
-    <property name="version" value="0.0.1"/>
+    <property name="version" value="0.0.2"/>
+
+    <!-- ==================================== GENERIC PROPERTIES =================================================== -->
+    
     <tstamp>
         <format property="build.time" pattern="yyyyMMdd-HHmmss" />
     </tstamp>
@@ -16,7 +19,7 @@
     </tstamp>
     <property name="build.name" value="${product}-${version}-${build.time}" />
     
-    <!-- ============================================ BUILD ======================================================== -->
+    <!-- ======================================== PREPARATIONS ===================================================== -->
 
     <target name="clean">
         <delete dir="${basedir}/build" />
@@ -31,6 +34,12 @@
     </target>
     
     <target name="quick" depends="clean,init"/>
+
+    <target name="setup" depends="clean,init">
+        <exec executable="php" dir="${basedir}" failonerror="off">
+            <arg line="composer.phar update" />
+        </exec>
+    </target>
 
     <!-- ============================================= FULL ======================================================== -->
 
@@ -80,9 +89,12 @@
             <arg value="cat build/logs/clover.xml | awk '/files/ {lines = $10; covered = $11; gsub(/[^0-9]*/, &quot;&quot;, lines);  gsub(/[^0-9]*/, &quot;&quot;, covered); coverage = (covered * 100) / lines; printf &quot;Total code coverage: %.2f %%&quot;, coverage}'" />
         </exec>
     </target>
-    
-    <target name="full" depends="phpunitExtended,package,print-code-coverage"/>
 
+    <!-- ===================================== COMPOUND SHORTCUTS ================================================== -->
+    
     <target name="ci"   depends="phpunitExtended,phpdoc,print-code-coverage"/>
+
+    <!-- reload dependencies and run full CI build -->
+    <target name="full" depends="setup,phpunitExtended,package,print-code-coverage"/>
     
 </project>
