@@ -14,6 +14,16 @@ cache backend (in case you were already using Doctrine/Cache).
 
 * Easy use of circuit breaker withing symfony2 applications.
 
+# Installation
+
+Since [Symfony 2](https://github.com/symfony/symfony) uses [composer](http://getcomposer.org/), all you have to do is add a require dependency to your composer.json
+
+    "require": {
+        "ejsmont-artur/php-circuit-breaker-bundle": "dev-master"
+    },
+
+After that you should update composer dependencies and you are good to go.
+
 # Examples
 
 Below you can see a few ways of obtaining instances of circuit breaker component. You can also see how to use it once
