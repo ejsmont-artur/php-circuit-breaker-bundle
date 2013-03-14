@@ -108,6 +108,6 @@
     <target name="ci"   depends="phpunitExtended,phpdoc,print-code-coverage"/>
 
     <!-- reload dependencies and run full CI build -->
-    <target name="full" depends="setup,phpunitExtended,package,print-code-coverage"/>
+    <target name="full" depends="setup,phpunitExtended,phpdoc,package,print-code-coverage"/>
     
 </project>
