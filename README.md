@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ejsmont-artur/php-circuit-breaker.png?branch=master)](https://travis-ci.org/ejsmont-artur/php-circuit-breaker)
 
-php-circuit-breaker-bundle is a Symfony 2 bundle providing easy integration of php-circuit-breaker component.
+[php-circuit-breaker-bundle](https://github.com/ejsmont-artur/php-circuit-breaker-bundle) is a Symfony 2 bundle providing easy integration of php-circuit-breaker component.
 
 php-circuit-breaker is the core package providing a generic PHP implementation of circuit breaker pattern.
 
