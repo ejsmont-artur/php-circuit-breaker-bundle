@@ -12,11 +12,11 @@ cache backend (in case you were already using Doctrine/Cache).
 
 # Motivation & Benefits
 
-* Easy use of circuit breaker withing symfony2 applications.
+* Easy use of circuit breaker withing [Symfony 2](https://github.com/symfony/symfony) applications.
 
 # Installation
 
-Since [Symfony 2](https://github.com/symfony/symfony) uses [composer](http://getcomposer.org/), all you have to do is add a require dependency to your composer.json
+Since [Symfony 2](https://github.com/symfony/symfony) uses [Composer](http://getcomposer.org/), all you have to do is add a require dependency to your composer.json
 
     "require": {
         "ejsmont-artur/php-circuit-breaker-bundle": "dev-master"
