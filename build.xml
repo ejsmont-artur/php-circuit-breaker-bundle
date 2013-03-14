@@ -103,6 +103,17 @@
         </exec>
     </target>
 
+    <target name="git-tag">
+        <exec executable="/bin/bash">
+            <arg value="-c" />
+            <arg value="git fetch --tags" />
+        </exec>
+    </target>
+
+
+
+
+
     <!-- ===================================== COMPOUND SHORTCUTS ================================================== -->
     
     <target name="ci"   depends="phpunitExtended,phpdoc,print-code-coverage"/>
