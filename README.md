@@ -10,11 +10,16 @@ and makes easier to use with [Symfony 2](https://github.com/symfony/symfony) fra
 Bundle uses service.xml to configure default services. It also integrates with Doctrine/Cache to allow you to use any 
 cache backend (in case you were already using Doctrine/Cache).
 
-## Motivation & Benefits
+# Motivation & Benefits
 
 * Easy use of circuit breaker withing symfony2 applications.
 
-## Example 1 default APC storage
+# Examples
+
+Below you can see a few ways of obtaining instances of circuit breaker component. You can also see how to use it once
+you get an instance. For more documentation please see [php-circuit-breaker](https://github.com/ejsmont-artur/php-circuit-breaker) page.
+
+## Example 1 - default APC storage
 
 This is the simplest example as you use defaults for all settings and default APC storage.
 Circuit breaker status information will be serialised into APC cache.
@@ -24,11 +29,11 @@ Circuit breaker status information will be serialised into APC cache.
 Yes, that is it. You can use predefined service called apcCircuitBreaker and you do not need any settings.
 It will use static factory and keep returning the same instance during script run.
 
-## Example 2 Custom cache and settings
+## Example 2 - configuration via dependency injection
 
     TBD
 
-## Example 3 Manual composition
+## Example 3 - manual composition
 
 If you wanted to do it for some reason you can also create instance of circuit breaker by hand.
 In this example we use Doctrine\Cache adapter so all you need to provide is the cache instance.
@@ -37,17 +42,18 @@ In this case, just to mix it up, we have decided to use file cache.
     $fileCache = new \Doctrine\Common\Cache\FilesystemCache('/tmp/cache/', '.cache');
     $circuitBreaker = Factory::getDoctrineCacheInstance($fileCache);
 
-## Examples continuation
+## Example of how to use an instance
 
-See more details of Circuit Breaker pattern here:
-https://github.com/ejsmont-artur/php-circuit-breaker
-http://artur.ejsmont.org/blog/circuit-breaker
+See more details of Circuit Breaker pattern on [php-circuit-breaker](https://github.com/ejsmont-artur/php-circuit-breaker) 
+github page and my [blog posts on circuit breaker](http://artur.ejsmont.org/blog/circuit-breaker)
 
-In short, once you get instance of circuit breaker you can ask it if particular service is available or not.
-Circuit breaker will check its status metrics and give you response based on its previous records.
-After success you tell Circuit Breaker it went ok, in case of service failure you report service being down.
-This way Circuit breaker learns what is the status of each service (names are arbitrary strings).
-You can define threshold and retry timeout so in case of failure it will let you retry from time to time.
+In short, once you get instance of circuit breaker, you can ask it if particular service is available or not.
+Circuit breaker will check it's status metrics and give you response based on its previous records.
+After a successful connection to the service you should tell Circuit Breaker that it went ok. In case of service 
+failure or timeout, you should report failure to circuit breaker.
+
+This way Circuit breaker "learns" what is the current status of each service (names are arbitrary strings).
+You can define threshold and retry timeout to allow single request from time to time in case service got fixed.
 
     if ($circuitBreaker->isAvailable("UserProfileService1")) {
         try{
