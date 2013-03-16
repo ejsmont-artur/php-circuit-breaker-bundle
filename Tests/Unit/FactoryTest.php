@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Ejsmont\CircuitBreakerBundle;
+namespace Ejsmont\CircuitBreakerBundle\Tests\Unit;
 
 use Ejsmont\CircuitBreakerBundle\Factory;
 use Ejsmont\CircuitBreaker\Core\CircuitBreaker;

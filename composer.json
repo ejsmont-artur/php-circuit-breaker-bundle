@@ -1,9 +1,10 @@
 {
     "name": "ejsmont-artur/php-circuit-breaker-bundle",
-    "type": "library",
+    "type": "symfony-bundle",
     "description": "PHP Circuit Breaker Bundle - Symfony 2 integration",
     "keywords": ["circuit breaker", "graceful", "error handling", "symfony2 adapter"],
     "homepage": "https://github.com/ejsmont-artur/php-circuit-breaker",
+    "license": "MIT",
     "authors": [
         {
             "name": "Artur Ejsmont",
@@ -17,9 +18,10 @@
         "doctrine/common": ">=2.0.0",
         "ejsmont-artur/php-circuit-breaker": "*"
     },
+    "target-dir": "Ejsmont/CircuitBreakerBundle",
     "autoload": {
         "psr-0": {
-            "Ejsmont\\CircuitBreakerBundle": "src"
+            "Ejsmont\\CircuitBreakerBundle": ""
         }
     }
 }

@@ -6,7 +6,6 @@
     convertNoticesToExceptions="true"
     convertWarningsToExceptions="true"
     strict="true"
-    checkSyntax="true"
 >
     <testsuites>
         <testsuite name="phpunit">
@@ -16,14 +15,7 @@
     
     <filter>
         <whitelist>
-            <directory suffix=".php">../src</directory>
+            <directory suffix=".php">../</directory>
         </whitelist>
     </filter>
-
-    <logging>
-        <log type="coverage-html"   target="../build/coverage" charset="UTF-8" yui="true" highlight="false" />
-        <log type="coverage-clover" target="../build/logs/clover.xml"/>
-        <log type="junit"           target="../build/logs/junit.xml" logIncompleteSkipped="false"/>
-    </logging>
-    
 </phpunit>

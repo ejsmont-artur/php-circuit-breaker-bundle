@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Ejsmont\CircuitBreakerBundle\Storage;
+namespace Ejsmont\CircuitBreakerBundle\Tests\Unit\Storage;
 
 use Ejsmont\CircuitBreakerBundle\Storage\DoctrineCacheAdapter;
 use Doctrine\Common\Cache\ArrayCache;

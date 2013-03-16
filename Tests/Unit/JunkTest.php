@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Ejsmont\CircuitBreakerBundle;
+namespace Ejsmont\CircuitBreakerBundle\Tests\Unit;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Ejsmont\CircuitBreaker\Core\CircuitBreaker;
@@ -23,8 +23,6 @@ class DoctrineCacheAdapterTest extends \PHPUnit_Framework_TestCase {
         $inst->load(array(), $container);
         $cb = $container->get('apcCircuitBreaker');
 
-        print_r($cb);
-        
         $this->assertTrue($cb instanceof CircuitBreaker);
     }
 
