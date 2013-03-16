@@ -19,11 +19,13 @@ class DoctrineCacheAdapterTest extends \PHPUnit_Framework_TestCase {
 
     public function testLoadApcExtension() {
         $container = new ContainerBuilder();
-
         $inst = new \Ejsmont\CircuitBreakerBundle\DependencyInjection\EjsmontCircuitBreakerExtension();
         $inst->load(array(), $container);
+        $cb = $container->get('apcCircuitBreaker');
 
-        $this->assertTrue($container->get('apcCircuitBreaker') instanceof CircuitBreaker);
+        print_r($cb);
+        
+        $this->assertTrue($cb instanceof CircuitBreaker);
     }
 
 }

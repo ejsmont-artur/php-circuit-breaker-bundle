@@ -3,8 +3,13 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!-- added factory and interface for circuit breaker -->
     <parameters>
+        <!-- how many times can each service fail before it is marked as unavailable -->
+        <parameter key="ejsmont_circuit_breaker.threshold">30</parameter>
+        <!-- how many seconds should circuit breaker wait before allowing a single client through -->
+        <parameter key="ejsmont_circuit_breaker.retry_timeout">60</parameter>
+        
+        <!-- you can override the factory if you wanted to but probably you should leave it as is -->
         <parameter key="ejsmont_circuit_breaker_factory.class">Ejsmont\CircuitBreaker\Factory</parameter>
         <parameter key="ejsmont_circuit_breaker.class">Ejsmont\CircuitBreaker\CircuitBreakerInterface</parameter>
     </parameters>
@@ -16,8 +21,8 @@
                  factory-class="%ejsmont_circuit_breaker_factory.class%"
                  factory-method="getSingleApcInstance"
         >
-            <argument>30</argument>
-            <argument>300</argument>
+            <argument>%ejsmont_circuit_breaker.threshold%</argument>
+            <argument>%ejsmont_circuit_breaker.retry_timeout%</argument>
         </service>
         
     </services>
