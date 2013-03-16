@@ -2,6 +2,9 @@
 
 namespace Tests\Unit\Ejsmont\CircuitBreakerBundle;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Ejsmont\CircuitBreaker\Core\CircuitBreaker;
+
 class DoctrineCacheAdapterTest extends \PHPUnit_Framework_TestCase {
 
     public function testBundle() {
@@ -12,6 +15,15 @@ class DoctrineCacheAdapterTest extends \PHPUnit_Framework_TestCase {
     public function testServiceXml() {
         $inst = new \Ejsmont\CircuitBreakerBundle\DependencyInjection\EjsmontCircuitBreakerExtension();
         $this->assertEquals('ejsmont_circuit_breaker', $inst->getAlias());
+    }
+
+    public function testLoadApcExtension() {
+        $container = new ContainerBuilder();
+
+        $inst = new \Ejsmont\CircuitBreakerBundle\DependencyInjection\EjsmontCircuitBreakerExtension();
+        $inst->load(array(), $container);
+
+        $this->assertTrue($container->get('apcCircuitBreaker') instanceof CircuitBreaker);
     }
 
 }
