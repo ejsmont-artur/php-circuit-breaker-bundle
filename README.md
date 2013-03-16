@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/ejsmont-artur/php-circuit-breaker-bundle.png?branch=master)](https://travis-ci.org/ejsmont-artur/php-circuit-breaker-bundle)
 
+[![knpbundles.com](http://knpbundles.com/ejsmont-artur/php-circuit-breaker-bundle/badge-short)](http://knpbundles.com/ejsmont-artur/php-circuit-breaker-bundle)
+
 php-circuit-breaker-bundle is a [Symfony 2](https://github.com/symfony/symfony) bundle, providing easy integration of [php-circuit-breaker](https://github.com/ejsmont-artur/php-circuit-breaker) component.
 
 [php-circuit-breaker](https://github.com/ejsmont-artur/php-circuit-breaker) is the core package providing a generic 
