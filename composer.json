@@ -3,7 +3,7 @@
     "type": "symfony-bundle",
     "description": "PHP Circuit Breaker Bundle - Symfony 2 integration",
     "keywords": ["circuit breaker", "graceful", "error handling", "symfony2 adapter"],
-    "homepage": "https://github.com/ejsmont-artur/php-circuit-breaker",
+    "homepage": "https://github.com/ejsmont-artur/php-circuit-breaker-bundle",
     "license": "MIT",
     "authors": [
         {
