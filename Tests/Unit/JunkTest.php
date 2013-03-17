@@ -24,6 +24,12 @@ class DoctrineCacheAdapterTest extends \PHPUnit_Framework_TestCase {
         $cb = $container->get('apcCircuitBreaker');
 
         $this->assertTrue($cb instanceof CircuitBreaker);
+        $this->assertTrue($cb->isAvailable("aaa1"));
+        for($i=0; $i<40; $i++){
+            $cb->reportFailure("aaa1");
+        }
+        $this->assertFalse($cb->isAvailable("aaa1"));
+        $this->assertTrue($cb->isAvailable("bbb1"));
     }
 
 }
