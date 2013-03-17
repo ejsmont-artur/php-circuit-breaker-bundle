@@ -28,6 +28,7 @@
     <target name="init">
         <mkdir dir="${basedir}/build" />
         <mkdir dir="${basedir}/build/logs" />
+        <mkdir dir="${basedir}/build/cache" />
         <mkdir dir="${basedir}/build/doc" />
         <mkdir dir="${basedir}/build/coverage" />
         <mkdir dir="${basedir}/build/dist" />
@@ -42,13 +43,15 @@
     </target>
 
     <target name="fetch-composer" depends="check-composer" unless="composer.phar.exists">
+        <echo >Fetching composer.phar</echo>   
         <exec executable="/bin/bash" failonerror="on">
             <arg value="-c" />
             <arg value="curl -s https://getcomposer.org/installer | php" />
         </exec>
     </target>
 
-    <target name="setup" depends="fetch-composer">
+    <target name="setup" depends="check-composer,fetch-composer">
+        <echo >Updating composer dependencies</echo>
         <exec executable="php" dir="${basedir}" failonerror="on">
             <arg line="composer.phar update" />
         </exec>
