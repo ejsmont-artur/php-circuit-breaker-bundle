@@ -21,8 +21,16 @@ cache backend (in case you were already using Doctrine/Cache).
 Since [Symfony 2](https://github.com/symfony/symfony) uses [Composer](http://getcomposer.org/), all you have to do is add a require dependency to your composer.json
 
     "require": {
-        "ejsmont-artur/php-circuit-breaker-bundle": "dev-master"
+        "ejsmont-artur/php-circuit-breaker-bundle": "0.1.*"
     },
+
+Then you can override defaults of threshold and timeout in your application services.yaml
+
+    parameters:
+        # Allowed amount of failures before marking service as unavailable
+        ejsmont_circuit_breaker.threshold: 3
+        # how many seconds should we wait before allowing a single request
+        ejsmont_circuit_breaker.retry_timeout: 5
 
 After that you should update composer dependencies and you are good to go.
 

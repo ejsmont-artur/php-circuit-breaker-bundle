@@ -10,7 +10,10 @@
         <parameter key="ejsmont_circuit_breaker.retry_timeout">60</parameter>
 
         <!-- ========== You should not have to override parameters below this line ========== -->
-        
+            
+        <!-- what file extension should we use if you decided to use default doctrine file cache -->
+        <parameter key="ejsmont_circuit_breaker.file_cache_extension">.cache</parameter>
+
         <!-- you can override the factory if you wanted to but probably you should leave it as is -->
         <parameter key="ejsmont_circuit_breaker_factory.class">Ejsmont\CircuitBreakerBundle\Factory</parameter>
         <parameter key="ejsmont_circuit_breaker.class">Ejsmont\CircuitBreaker\CircuitBreakerInterface</parameter>
@@ -18,10 +21,11 @@
 
     <services>
         <!-- cache instance used by circuit breaker, please override it with your custom instance -->
-        <service id="circuitBreakerCacheBackend" class="Doctrine\Common\Cache\PhpFileCache">
+        <service id="circuitBreakerCacheBackend" class="Doctrine\Common\Cache\FilesystemCache">
             <argument>%kernel.cache_dir%</argument>
+            <argument>%ejsmont_circuit_breaker.file_cache_extension%</argument>
         </service>
-
+        
         <!-- ========== You should not have to override services below this line ========== -->
 
         <!-- circuit breaker service with cache backend -->
