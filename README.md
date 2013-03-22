@@ -98,13 +98,15 @@ You can define threshold and retry timeout to allow single request from time to 
 
     if ($circuitBreaker->isAvailable("UserProfileService1")) {
         try{
-            // do whatever necessary
+            // do something useful with the service
             $circuitBreaker->reportSuccess('UserProfileService1');
         }catch(ServiceCallFailedServiceDown $e){
+            // if service is down report it back to circuit breaker
             $circuitBreaker->reportFailure('UserProfileService1');
+            // handle as temporarily unavailable (or remove some features)
         }
     }else{
-        // show temporarily unavailable message
+        // handle as temporarily unavailable (or remove some features)
     }   
 
 ## Running tests
