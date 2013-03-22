@@ -51,7 +51,28 @@ It will use static factory and keep returning the same instance during script ru
 
 ## Example 2 - configuration via dependency injection
 
-    TBD
+Beside of "apcCircuitBreaker" service that uses APC you can use "circuitBreaker" service which is configurable and
+allows you to inject any doctrine cache instance.
+
+In the example below i use "circuitBreakerCacheBackend" service to override the default behaviour of "circuitBreaker" 
+service. Here i am using memcached but it could be any doctrine cache instance. This service affects behaviour of 
+"circuitBreaker" only, "apcCircuitBreaker" service uses its own APC cache instance.
+
+Configure as needed in service.yaml of your app:
+
+    services:
+        circuitBreakerCacheBackend:
+            class: Doctrine\Common\Cache\MemcachedCache
+            calls:
+              -   [setMemcached, ["@memcachedInstance"]]
+        memcachedInstance:
+            class: Memcached
+            calls:
+                - [addServer, ['127.0.0.1', 11211, 1]]
+
+Then in your code you can use the configurable doctrine cache instance like below:
+
+     $circuitBreaker = $this->get('circuitBreaker');
 
 ## Example 3 - manual composition
 
