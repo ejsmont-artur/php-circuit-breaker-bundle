@@ -53,7 +53,7 @@
     <target name="setup" depends="check-composer,fetch-composer">
         <echo >Updating composer dependencies</echo>
         <exec executable="php" dir="${basedir}" failonerror="on">
-            <arg line="composer.phar update" />
+            <arg line="-d apc.enable_cli=0 composer.phar update" />
         </exec>
     </target>
 
