@@ -16,12 +16,10 @@
     
     <filter>
         <whitelist>
-            <directory suffix=".php">../</directory>
-            <exclude>
-                <directory>../Test</directory>
-                <directory>../vendor</directory>
-                <directory>../build</directory>
-            </exclude>
+            <directory suffix=".php">../DependencyInjection</directory>
+            <directory suffix=".php">../Storage</directory>
+            <file>../EjsmontCircuitBreakerBundle.php</file>
+            <file>../Factory.php</file>
         </whitelist>
     </filter>
 
