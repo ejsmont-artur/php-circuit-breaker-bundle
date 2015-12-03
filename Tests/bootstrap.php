@@ -1,9 +1,11 @@
 <?php
 
-if (!file_exists($file = __DIR__ . '/../vendor/autoload.php')) {
-    throw new RuntimeException('Install dependencies to run test suite.');
-}
+require_once __DIR__.'/../vendor/autoload.php';
 
-$loader = require_once $file;
+use Composer\Autoload\ClassLoader;
 
+$loader = new ClassLoader();
 $loader->add('Ejsmont\CircuitBreakerBundle', __DIR__);
+$loader->register();
+
+return $loader;
