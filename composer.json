@@ -1,27 +1,38 @@
 {
-    "name": "ejsmont-artur/php-circuit-breaker-bundle",
-    "type": "symfony-bundle",
-    "description": "PHP Circuit Breaker Bundle - Symfony 2 integration",
-    "keywords": ["circuit breaker", "graceful", "error handling", "symfony2 adapter"],
-    "homepage": "https://github.com/ejsmont-artur/php-circuit-breaker-bundle",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Artur Ejsmont",
-            "homepage": "http://artur.ejsmont.org/blog/",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "php": ">=5.3.0",
-        "symfony/symfony": "2.1.*",
-        "doctrine/common": ">=2.0.0",
-        "ejsmont-artur/php-circuit-breaker": ">=0.1.0"
-    },
-    "target-dir": "Ejsmont/CircuitBreakerBundle",
-    "autoload": {
-        "psr-0": {
-            "Ejsmont\\CircuitBreakerBundle": ""
-        }
+  "name": "ejsmont-artur/php-circuit-breaker-bundle",
+  "type": "symfony-bundle",
+  "description": "PHP Circuit Breaker Bundle - Symfony 2 integration",
+  "keywords": [
+    "circuit breaker",
+    "graceful",
+    "error handling",
+    "symfony2 adapter"
+  ],
+  "homepage": "https://github.com/ejsmont-artur/php-circuit-breaker-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Artur Ejsmont",
+      "homepage": "http://artur.ejsmont.org/blog/",
+      "role": "Developer"
     }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "symfony/symfony": "~2.8.0",
+    "doctrine/common": ">=2.0.0",
+    "ejsmont-artur/php-circuit-breaker": ">=0.1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.0",
+    "johnkary/phpunit-speedtrap": "~1.0@dev",
+    "mockery/mockery": "~0.9",
+    "phpdocumentor/phpdocumentor": "2.*"
+  },
+  "target-dir": "Ejsmont/CircuitBreakerBundle",
+  "autoload": {
+    "psr-0": {
+      "Ejsmont\\CircuitBreakerBundle": ""
+    }
+  }
 }

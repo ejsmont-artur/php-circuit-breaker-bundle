@@ -60,7 +60,7 @@
     <!-- ============================================= FULL ======================================================== -->
 
     <target name="phpunit" depends="quick">
-        <exec executable="phpunit" dir="${basedir}/Tests" failonerror="on">
+        <exec executable="./../vendor/bin/phpunit" dir="${basedir}/Tests" failonerror="on">
         </exec>
         <delete>            
             <fileset dir="/tmp" includes="unit-test*"/>        
@@ -68,7 +68,7 @@
     </target>
     
     <target name="phpunitExtended" depends="quick">
-        <exec executable="phpunit" dir="${basedir}/Tests" failonerror="on">
+        <exec executable="./../vendor/bin/phpunit" dir="${basedir}/Tests" failonerror="on">
             <arg line="--configuration phpunit-extended.xml" />
         </exec>
         <delete>            
@@ -77,7 +77,7 @@
     </target>
 
     <target name="phpdoc" depends="quick">
-        <exec executable="phpdoc" dir="${basedir}" failonerror="off">
+        <exec executable="./vendor/bin/phpdoc" dir="${basedir}" failonerror="off">
             <arg line="-d . --ignore vendor/,build/,Tests/ -t build/doc" />
         </exec>
     </target>
